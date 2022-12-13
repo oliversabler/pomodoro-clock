@@ -2,9 +2,9 @@
 A very basic implementation of a pomodoro clock running in the terminal using [Rust](https://www.rust-lang.org/). This is not meant to be a serious project.
 
 Alter global variables to set custom values, current default values are:
-`POMODORO`: 25 minutes
-`SHORT_BREAK`: 5 minutes
-`LONG_BREAK`: 15 minutes
+* `POMODORO`: 25 minutes
+* `SHORT_BREAK`: 5 minutes
+* `LONG_BREAK`: 15 minutes
 
 ## Ideas to implement
 * GUI (?)
