@@ -1,4 +1,5 @@
 use std::{thread, time};
+use std::io::{stdout, Write};
 
 // Time
 const POMODORO: u64 = 25 * 60; // 25 minutes
@@ -6,9 +7,9 @@ const SHORT_BREAK: u64 = 5 * 60; // 5 minutes
 const LONG_BREAK: u64 = 15 * 60; // 15 minutes
 
 // Test Time
-// const POMODORO: u64 = 10;
-// const SHORT_BREAK: u64 = 2;
-// const LONG_BREAK: u64 = 5;
+//const POMODORO: u64 = 10;
+//const SHORT_BREAK: u64 = 2;
+//const LONG_BREAK: u64 = 5;
 
 const MAX_POMODORO_COUNT: u8 = 3;
 
@@ -35,6 +36,8 @@ fn main() {
 }
 
 fn run_timer(kind: Kind) {
+    let mut out = stdout();
+
     println!("Running timer for {:?}", kind);
 
     let timer = time::Duration::from_secs(set_timer(kind));
@@ -57,7 +60,10 @@ fn run_timer(kind: Kind) {
         
         if second_updated(remaining_seconds, previous_second) {
             previous_second = remaining_seconds;
-            println!("Time remaining: {}s", remaining_seconds + 1);
+
+            print!("\rTime remaining: {}s     ", remaining_seconds + 1);
+
+            out.flush().unwrap();
         }
     }
 }
